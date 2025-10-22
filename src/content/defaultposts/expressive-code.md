@@ -4,7 +4,7 @@ published: 2024-04-10
 description: How code blocks look in Markdown using Expressive Code.
 tags: [Markdown, Blogging, Demo]
 category: Examples
-draft: false
+draft: true
 ---
 
 Here, we'll explore how code blocks look using [Expressive Code](https://expressive-code.com/). The provided examples are based on the official documentation, which you can refer to for further details.
@@ -32,7 +32,7 @@ ANSI colors:
 256 colors (showing colors 160-177):
 [38;5;160m160 [38;5;161m161 [38;5;162m162 [38;5;163m163 [38;5;164m164 [38;5;165m165[0m
 [38;5;166m166 [38;5;167m167 [38;5;168m168 [38;5;169m169 [38;5;170m170 [38;5;171m171[0m
-[38;5;172m172 [38;5;173m173 [38;5;174m174 [38;5;175m175 [38;5;176m176 [38;5;177m177[0m
+[38;5;172m172 [38;5;173m173 [38;5;174m174 [38;5;175m175 [38;5;176m176 [38;5;177m177吗[0m
 
 Full RGB colors:
 [38;2;34;139;34mForestGreen - RGB(34, 139, 34)[0m
