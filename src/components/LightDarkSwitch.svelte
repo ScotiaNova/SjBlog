@@ -12,50 +12,48 @@ import { onMount } from "svelte";
 import type { LIGHT_DARK_MODE } from "@/types/config.ts";
 
 const seq: LIGHT_DARK_MODE[] = [LIGHT_MODE, DARK_MODE, AUTO_MODE];
-let mode: LIGHT_DARK_MODE = $state(DARK_MODE); // 强制初始化为 DARK_MODE
+let mode: LIGHT_DARK_MODE = $state(DARK_MODE);
 
 onMount(() => {
-	// 强制设置模式为 DARK_MODE，忽略存储的主题
-	mode = DARK_MODE;
-	setTheme(DARK_MODE);
-	applyThemeToDocument(DARK_MODE);
-	// 移除系统偏好监听，因为强制暗黑模式
-	// const darkModePreference = window.matchMedia("(prefers-color-scheme: dark)");
-	// const changeThemeWhenSchemeChanged: Parameters<
-	//	typeof darkModePreference.addEventListener<"change">
-	// >[1] = (_e) => {
-	//	applyThemeToDocument(mode);
-	// };
-	// darkModePreference.addEventListener("change", changeThemeWhenSchemeChanged);
-	// return () => {
-	//	darkModePreference.removeEventListener(
-	//		"change",
-	//		changeThemeWhenSchemeChanged,
-	//	);
-	// };
+	mode = getStoredTheme();
+	const darkModePreference = window.matchMedia("(prefers-color-scheme: dark)");
+	const changeThemeWhenSchemeChanged: Parameters<
+		typeof darkModePreference.addEventListener<"change">
+	>[1] = (_e) => {
+		applyThemeToDocument(mode);
+	};
+	darkModePreference.addEventListener("change", changeThemeWhenSchemeChanged);
+	return () => {
+		darkModePreference.removeEventListener(
+			"change",
+			changeThemeWhenSchemeChanged,
+		);
+	};
 });
 
-// 修改 switchScheme 为总是设置 DARK_MODE
 function switchScheme(newMode: LIGHT_DARK_MODE) {
-	mode = DARK_MODE;
-	setTheme(DARK_MODE);
-	applyThemeToDocument(DARK_MODE);
+	mode = newMode;
+	setTheme(newMode);
 }
 
-// 修改 toggleScheme 为无效果，或强制 DARK_MODE
 function toggleScheme() {
-	switchScheme(DARK_MODE);
+	let i = 0;
+	for (; i < seq.length; i++) {
+		if (seq[i] === mode) {
+			break;
+		}
+	}
+	switchScheme(seq[(i + 1) % seq.length]);
 }
 
-// 移除面板显示功能，或保持但选择无效
 function showPanel() {
-	// const panel = document.querySelector("#light-dark-panel");
-	// panel.classList.remove("float-panel-closed");
+	const panel = document.querySelector("#light-dark-panel");
+	panel.classList.remove("float-panel-closed");
 }
 
 function hidePanel() {
-	// const panel = document.querySelector("#light-dark-panel");
-	// panel.classList.add("float-panel-closed");
+	const panel = document.querySelector("#light-dark-panel");
+	panel.classList.add("float-panel-closed");
 }
 </script>
 
@@ -73,8 +71,7 @@ function hidePanel() {
         </div>
     </button>
 
-    <!-- 移除或隐藏面板，因为模式已锁死 -->
-    <!-- <div id="light-dark-panel" class="hidden lg:block absolute transition float-panel-closed top-11 -right-2 pt-5" >
+    <div id="light-dark-panel" class="hidden lg:block absolute transition float-panel-closed top-11 -right-2 pt-5" >
         <div class="card-base float-panel p-2">
             <button class="flex transition whitespace-nowrap items-center !justify-start w-full btn-plain scale-animation rounded-lg h-9 px-3 font-medium active:scale-95 mb-0.5"
                     class:current-theme-btn={mode === LIGHT_MODE}
@@ -98,5 +95,5 @@ function hidePanel() {
                 {i18n(I18nKey.systemMode)}
             </button>
         </div>
-    </div> -->
+    </div>
 </div>

@@ -20,6 +20,10 @@ export type SiteConfig = {
 		hue: number;
 		fixed: boolean;
 	};
+	themeMode: {
+		mode: "dark" | "light";
+		fixed: boolean;
+	};
 	banner: {
 		enable: boolean;
 		src: string;

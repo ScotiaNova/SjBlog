@@ -15,6 +15,10 @@ export const siteConfig: SiteConfig = {
 		hue: 185, // 主题颜色的默认色调，从 0 到 360。例如红色：0，海蓝色：200，青色：250，粉色：345
 		fixed: true, // 隐藏访客的主题颜色选择器
 	},
+	themeMode: {
+		mode: "dark",
+		fixed: true,
+	},
 	banner: {
 		enable: true,
 		src: "assets/images/banner.png", // 相对于 /src 目录。如果以 '/' 开头，则相对于 /public 目录
