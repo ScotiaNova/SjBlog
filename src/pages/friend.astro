@@ -1,0 +1,154 @@
+---
+import I18nKey from "../i18n/i18nKey";
+import { i18n } from "../i18n/translation";
+import MainGridLayout from "../layouts/MainGridLayout.astro";
+
+const friends = [
+    {name:"折乙", avatar:"/friends/zheyi.png", url:"https://zheyi.in", desc:"前端引路人"},
+    {name:"蛋", avatar:"/friends/dan.png", url:"https://dumbdaidai.github.io/", desc:"爱读点蛋爷文学"},
+    {name:"卞", avatar:"/friends/bian.png", url:"https://www.endercrysta2.xyz/", desc:"搞后端的舍友"},
+]
+---
+<MainGridLayout title={i18n(I18nKey.about)} description={i18n(I18nKey.about)}>
+    
+    <div class="friends-container">
+        {friends.map((friend)=>(
+            
+            <div class="card-base">
+                <a aria-label={`Go to ${friend.name}'s Blog`} href={friend.url}
+                    class="avatar-link">
+                    <img src={friend.avatar} alt={`Avatar of ${friend.name}`} class="avatar"/>
+                </a>
+                
+                <div class="card-content">
+                    <div class="friend-name">{friend.name}</div>
+                    <div class="separator"></div>
+                    <div class="friend-desc">{friend.desc}</div>
+                    
+                    <div class="button-container">
+                        <a rel="me" aria-label={`Visit ${friend.name}'s Blog`} href={friend.url} target="_blank" class="blog-button">
+                            His Blog
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+        ))}
+    </div>
+</MainGridLayout>
+
+
+<style scoped>
+    .friends-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        padding: 0 0 10px 0;
+    }
+
+    .card-base {
+        flex-shrink: 0;
+        width: 250px;
+        background-color: #151f1e;
+        border-radius: 12px;
+        padding: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease-in-out;
+        
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .card-base:hover {
+        transform: translateY(5px);
+    }
+    
+    .avatar-link {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        margin: 4px auto 12px;
+        border-radius: 8px;
+        overflow: hidden;
+        transition: transform 0.2s ease-in-out;
+    }
+    .avatar-link:active {
+        transform: scale(0.95);
+    }
+
+    .avatar {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        object-fit: cover;
+    }
+
+    .card-content {
+        padding: 0 8px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .friend-name {
+        font-weight: bold;
+        font-size: 1.25rem;
+        text-align: center;
+        margin-bottom: 4px;
+        color: #fff;
+        transition: color 0.2s;
+    }
+
+    .separator {
+        height: 4px;
+        width: 20px;
+        background-color: #00cab9;
+        margin: 0 auto 10px;
+        border-radius: 9999px;
+        transition: background-color 0.2s;
+    }
+
+    .friend-desc {
+        text-align: center;
+        color: #9ca3af;
+        margin-bottom: 12px;
+        transition: color 0.2s;
+    }
+
+    .button-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+        margin-bottom: 4px;
+        width: 100%;
+    }
+
+    .blog-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        
+        height: 40px;
+        padding: 0 12px;
+        font-weight: bold;
+        font-size: 1rem;
+        
+        border-radius: 8px;
+        background-color: #1f3b38;
+        color: #c7cecd;
+        
+        transition: transform 0.1s, background-color 0.2s, color 0.2s, border-color 0.2s;
+    }
+    
+    .blog-button:hover {
+        background-color: #284945;
+    }
+
+    .blog-button:active {
+        transform: scale(0.95);
+    }
+</style>
