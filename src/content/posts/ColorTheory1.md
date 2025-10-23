@@ -1,5 +1,5 @@
 ---
-title: 浅谈色彩
+title: 浅谈色彩 —— ColorTheory 1
 published: 2025-10-23
 description: '我的博客出生了，但我不知该往里面填什么。作为菜鸟级的前端学徒，我恐怕没什么好分享的。于是我想，如果我不当程序员，我能做些什么？——平面设计，这也许是我最向往的。因此，我今天不谈写码，咱们聊聊颜色。'
 image: 'https://static1.squarespace.com/static/54b1c248e4b0c108166821e2/54b24027e4b0dfd3c7692f0c/558e8cede4b01c6273e831f4/1506237018698/?format=1500w'
@@ -109,3 +109,10 @@ lang: 'zh_CN'
 
 如果你实在发愁，可以参考下面这个视频 *(来自YouTube)* ，我认为是最有效的系统性选色方案。
 <iframe width="100%" height="468" src="https://www.youtube.com/embed/yYwEnLYT55c?si=oyH6pnXKYtMLE5Bn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+<br>
+
+# 结束语
+这是色彩系列的**第一章节**，介绍了**色彩的基本概念**。  
+下一章节，我会结合**具体设计**，介绍一些**实际的配色建议**。
+*敬请期待。*

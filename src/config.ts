@@ -21,7 +21,7 @@ export const siteConfig: SiteConfig = {
 	},
 	banner: {
 		enable: true,
-		src: "assets/images/banner.png", // 相对于 /src 目录。如果以 '/' 开头，则相对于 /public 目录
+		src: "/myself/banner.png", // 相对于 /src 目录。如果以 '/' 开头，则相对于 /public 目录
 		position: "center", // 相当于 object-position，仅支持 'top'、'center'、'bottom'。默认为 'center'
 		credit: {
 			enable: true, // 显示横幅图像的版权文本
@@ -56,7 +56,7 @@ export const navBarConfig: NavBarConfig = {
 };
 
 export const profileConfig: ProfileConfig = {
-	avatar: "assets/images/avatar.png", // 相对于 /src 目录。如果以 '/' 开头，则相对于 /public 目录
+	avatar: "/myself/avatar.png", // 相对于 /src 目录。如果以 '/' 开头，则相对于 /public 目录
 	name: "节木",
 	bio: "敛木为节，蓄风骨于内。",
 	links: [
