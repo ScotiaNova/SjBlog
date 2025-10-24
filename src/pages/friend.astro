@@ -7,32 +7,35 @@ const friends = [
     {name:"折乙", avatar:"/friends/zheyi.png", url:"https://zheyi.in", desc:"前端引路人"},
     {name:"蛋", avatar:"/friends/dan.png", url:"https://dumbdaidai.github.io/", desc:"爱读点蛋爷文学"},
     {name:"卞", avatar:"/friends/bian.png", url:"https://www.endercrysta2.xyz/", desc:"搞后端的舍友"},
+    {name:"Fridayssheep", avatar:"/friends/friendssheep.png", url:"https://blog.fridayssheep.top/", desc:"动手绝对能力者"},
 ]
 ---
 <MainGridLayout title={i18n(I18nKey.about)} description={i18n(I18nKey.about)}>
     
     <div class="friends-container">
-        {friends.map((friend)=>(
-            
-            <div class="card-base">
-                <a aria-label={`Go to ${friend.name}'s Blog`} href={friend.url}
-                    class="avatar-link">
-                    <img src={friend.avatar} alt={`Avatar of ${friend.name}`} class="avatar"/>
-                </a>
-                
-                <div class="card-content">
-                    <div class="friend-name">{friend.name}</div>
-                    <div class="separator"></div>
-                    <div class="friend-desc">{friend.desc}</div>
+        {friends.map((friend, index)=>(
+            <>
+                <div class="card-base">
+                    <a aria-label={`Go to ${friend.name}'s Blog`} href={friend.url}
+                        class="avatar-link">
+                        <img src={friend.avatar} alt={`Avatar of ${friend.name}`} class="avatar"/>
+                    </a>
                     
-                    <div class="button-container">
-                        <a rel="me" aria-label={`Visit ${friend.name}'s Blog`} href={friend.url} target="_blank" class="blog-button">
-                            His Blog
-                        </a>
+                    <div class="card-content">
+                        <div class="friend-name">{friend.name}</div>
+                        <div class="separator"></div>
+                        <div class="friend-desc">{friend.desc}</div>
+                        
+                        <div class="button-container">
+                            <a rel="me" aria-label={`Visit ${friend.name}'s Blog`} href={friend.url} target="_blank" class="blog-button">
+                                His Blog
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            
+                
+                {index === 2 && <div style="width: 100%; height: 0;"></div>}
+            </>
         ))}
     </div>
 </MainGridLayout>
